@@ -1,0 +1,66 @@
+.form {
+  margin: 16px;
+}
+
+.h2 {
+  margin: 16px 0;
+}
+
+.h3 {
+  margin: 16px 0;
+}
+
+.gridThree {
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gridTwo {
+  margin: 8px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.flex {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+}
+
+.flex > div {
+  margin-top: 14px;
+}
+
+.selectWrapperContainer {
+  position: relative;
+}
+.selectWrapper {
+  position: relative;
+  z-index: 1;
+}
+.inputRequired {
+  position: absolute;
+  border: 0;
+  color: transparent;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}

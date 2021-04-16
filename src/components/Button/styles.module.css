@@ -1,0 +1,30 @@
+.container {
+  margin-top: 18px;
+  width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .button + div {
+    margin-top: 14px;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 48px;
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: var(--color-button-text);
+  border: 0;
+  padding: 0 16px;
+  font-size: 16px;
+  transition: ease-in-out background 0.2s;
+}
+
+.button:hover {
+  background: var(--color-primary-darker);
+}
+
+.button:disabled {
+  background: var(--color-text-complement);
+}
