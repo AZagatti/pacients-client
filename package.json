@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:netlify": "echo \"REACT_APP_API_URL=$REACT_APP_API_URL\" > .env react-scripts build",
+    "build:netlify": "echo \"REACT_APP_API_URL=$REACT_APP_API_URL\" > .env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
