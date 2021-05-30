@@ -32,17 +32,19 @@ export interface Pacient {
 }
 
 export const createPacientRepository = async (pacient: Pacient) => {
-  const response = await api.post<Pacient>("/pacients", pacient);
+  const response = await api.post<{ data: Pacient }>("/pacients", pacient);
 
-  return response.data;
+  return response.data.data;
 };
 
 export const showPacientsRepository = async (page: number) => {
   const response = await api.get<{
-    pacients: Pacient[];
-    page: number;
-    total: number;
-    lastPage: number;
+    data: Pacient[];
+    meta: {
+      current_page: number;
+      total: number;
+      last_page: number;
+    };
   }>("/pacients", {
     params: {
       page,
@@ -53,9 +55,12 @@ export const showPacientsRepository = async (page: number) => {
 };
 
 export const updatePacientRepository = async (pacient: Pacient) => {
-  const response = await api.put<Pacient>("/pacients", pacient);
+  const response = await api.put<{ data: Pacient }>(
+    `/pacients/${pacient.id}`,
+    pacient
+  );
 
-  return response.data;
+  return response.data.data;
 };
 
 export const deletePacientRepository = async (pacient_id: number) => {

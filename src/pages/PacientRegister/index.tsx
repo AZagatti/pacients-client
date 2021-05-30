@@ -3,26 +3,38 @@ import { useForm } from "react-hook-form";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { createPacientRepository, Pacient } from "../../repositories/pacient";
+import {
+  createPacientRepository,
+  Pacient,
+  updatePacientRepository,
+} from "../../repositories/pacient";
 
 import styles from "./styles.module.css";
 
 import Layout from "../../components/Layout";
+import PaginatedSelectPacients from "../../components/PaginatedSelectPacients";
 
 const PacientRegister = () => {
   const [result, setResult] = useState<"success" | "error" | undefined>();
   const [loading, setLoading] = useState(false);
 
+  const [pacient, setPacient] = useState<Pacient>();
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<Pacient>();
   const onSubmit = async (data: Pacient) => {
     try {
       setLoading(true);
-      await createPacientRepository(data);
+      if (pacient) {
+        await updatePacientRepository(data);
+      } else {
+        await createPacientRepository(data);
+      }
       reset();
       setResult("success");
     } catch (err) {
@@ -34,13 +46,40 @@ const PacientRegister = () => {
   };
 
   useEffect(() => {
+    (() => {
+      if (!pacient) return reset();
+
+      for (const objK in pacient) {
+        const key = objK as keyof Pacient;
+        setValue(key, pacient[key]);
+      }
+    })();
+  }, [pacient, setValue, reset, result]);
+
+  useEffect(() => {
     setTimeout(() => {
       setResult(undefined);
     }, 4000);
   }, [result]);
 
   return (
-    <Layout result={result} title="Cadastro de Pacientes">
+    <Layout
+      result={result}
+      messages={{
+        success: pacient
+          ? "Atualização do paciente realizada com sucesso"
+          : "Cadastro do paciente realizado com sucesso",
+        error: pacient
+          ? "Erro ao atualizar usuário"
+          : "Erro ao cadastrar usuário",
+      }}
+      title="Pacientes"
+    >
+      <PaginatedSelectPacients value={pacient} onChange={setPacient} />
+
+      <h2 className={styles.h2}>
+        {pacient ? "Atualizar paciente" : "Cadastrar paciente"}
+      </h2>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"

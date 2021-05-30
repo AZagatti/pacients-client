@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import {
   createAvaliationRepository,
-  AvaliationForm,
+  Avaliation as AvaliationForm,
   indexAvaliationRepository,
   updateAvaliationRepository,
 } from "../../repositories/avaliation";

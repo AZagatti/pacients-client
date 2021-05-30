@@ -13,11 +13,11 @@ const Header = ({ children }: IHeader) => {
         <ul className={styles.list}>
           <li className={styles.item}>
             <NavLink
-              to="/pacient-register"
+              to="/pacients"
               className={styles.navLink}
               activeClassName={styles.navLinkSelected}
             >
-              Cadastro de Pacientes
+              Pacientes
             </NavLink>
           </li>
           <li className={styles.item}>

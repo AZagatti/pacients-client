@@ -33,9 +33,9 @@ const MedicalRecord = () => {
           page,
           pacient_id: pacient.id,
         });
-        setPage(data.page);
-        setLastPage(data.lastPage);
-        setMedicalRecords(data.medicalRecord);
+        setPage(data.meta.current_page);
+        setLastPage(data.meta.last_page);
+        setMedicalRecords(data.data);
       } catch (err) {
         setMedicalRecords([]);
         setResult("error");

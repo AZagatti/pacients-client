@@ -11,9 +11,9 @@ const Routes = () => {
       <Switch>
         <Header>
           <Route exact path="/">
-            <Redirect to="/pacient-register" />
+            <Redirect to="/pacients" />
           </Route>
-          <Route path="/pacient-register" component={PacientRegister} />
+          <Route path="/pacients" component={PacientRegister} />
           <Route path="/pacient-avaliation" component={Avaliation} />
           <Route path="/pacient-medical-record" component={MedicalRecord} />
         </Header>

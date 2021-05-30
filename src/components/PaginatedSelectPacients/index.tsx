@@ -23,8 +23,8 @@ const loadPageOptions = async (
   { page }: { page: number }
 ) => {
   const data = await showPacientsRepository(page);
-  const hasMore = data.lastPage !== data.page;
-  const options = data.pacients
+  const hasMore = data.meta.last_page !== data.meta.current_page;
+  const options = data.data
     .map((pacient) => ({
       ...pacient,
       value: pacient.id,

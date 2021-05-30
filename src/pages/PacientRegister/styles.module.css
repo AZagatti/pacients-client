@@ -5,6 +5,10 @@
   gap: 24px;
 }
 
+.h2 {
+  margin: 16px 0;
+}
+
 @media screen and (max-width: 768px) {
   .form {
     display: flex;

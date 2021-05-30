@@ -9,10 +9,8 @@ export interface IMedicalRecord {
 }
 
 interface MedicalRecordResponse {
-  medicalRecord: IMedicalRecord[];
-  page: number;
-  total: number;
-  lastPage: number;
+  data: IMedicalRecord[];
+  meta: { current_page: number; total: number; last_page: number };
 }
 
 interface MedicalRecordParams {
@@ -43,21 +41,21 @@ export const createMedicalRecordRepository = async ({
   medicalRecord: IMedicalRecord;
   pacient_id: number;
 }) => {
-  const response = await api.post<IMedicalRecord>(
+  const response = await api.post<{ data: IMedicalRecord }>(
     `/medical_record/${pacient_id}`,
     medicalRecord
   );
 
-  return response.data;
+  return response.data.data;
 };
 
 export const updateMedicalRecordRepository = async (
   medicalRecord: IMedicalRecord
 ) => {
-  const response = await api.put<IMedicalRecord>(
-    "/medical_record",
+  const response = await api.put<{ data: IMedicalRecord }>(
+    `/medical_record/${medicalRecord.id}`,
     medicalRecord
   );
 
-  return response.data;
+  return response.data.data;
 };
