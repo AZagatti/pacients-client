@@ -21,9 +21,8 @@ const MedicalRecord = () => {
   const [pacient, setPacient] = useState<Pacient>();
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
-  const [medicalRecordSelected, setMedicalRecordSelected] = useState<
-    IMedicalRecord | undefined
-  >();
+  const [medicalRecordSelected, setMedicalRecordSelected] =
+    useState<IMedicalRecord | undefined>();
 
   useEffect(() => {
     (async () => {
@@ -83,7 +82,11 @@ const MedicalRecord = () => {
         result={result}
         title="Prontuário Médico"
       >
-        <PaginatedSelectPacients value={pacient} onChange={setPacient} />
+        <PaginatedSelectPacients
+          placeholder="Escolha um paciente para criar ou atualizar os prontuários..."
+          value={pacient}
+          onChange={setPacient}
+        />
 
         <div className={styles.tableDiv}>
           <table className={styles.table}>

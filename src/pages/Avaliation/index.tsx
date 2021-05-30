@@ -103,6 +103,7 @@ const Avaliation = () => {
     >
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <PaginatedSelectPacients
+          placeholder="Escolha um paciente para criar ou atualizar a avaliação..."
           value={pacient}
           onChange={setPacient}
         />

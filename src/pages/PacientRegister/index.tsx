@@ -75,7 +75,11 @@ const PacientRegister = () => {
       }}
       title="Pacientes"
     >
-      <PaginatedSelectPacients value={pacient} onChange={setPacient} />
+      <PaginatedSelectPacients
+        placeholder="Escolha um paciente para atualizar seus dados..."
+        value={pacient}
+        onChange={setPacient}
+      />
 
       <h2 className={styles.h2}>
         {pacient ? "Atualizar paciente" : "Cadastrar paciente"}

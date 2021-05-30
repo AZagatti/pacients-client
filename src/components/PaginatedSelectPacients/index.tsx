@@ -13,6 +13,7 @@ import ConfirmModal from "../modals/ConfirmModal";
 import EditPacientModal from "../modals/pacient/EditPacientModal";
 
 interface PaginatedSelectPacientsProps {
+  placeholder: string;
   value?: Pacient;
   onChange: Dispatch<SetStateAction<Pacient | undefined>>;
 }
@@ -45,6 +46,7 @@ const loadPageOptions = async (
 const initialResult = { success: false, error: false };
 
 const PaginatedSelectPacients = ({
+  placeholder,
   value,
   onChange,
 }: PaginatedSelectPacientsProps) => {
@@ -104,7 +106,7 @@ const PaginatedSelectPacients = ({
           value={value}
           loadOptions={loadPageOptions}
           cacheUniqs={[isConfirmModalOpen]}
-          placeholder="Escolha um paciente para ver os atendimentos"
+          placeholder={placeholder}
           noOptionsMessage={() => "Nenhum paciente"}
           loadingMessage={() => "Carregando pacientes..."}
         />
